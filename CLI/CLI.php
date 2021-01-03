@@ -1,5 +1,5 @@
 <?php
-namespace glockmvc\core\CLI;
+namespace ernestocalise\glockmvc\CLI;
 class CLI{
     public string $path;
     public function __construct($path)

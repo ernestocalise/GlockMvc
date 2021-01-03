@@ -1,6 +1,6 @@
 <?php
-namespace glockmvc\core\form;
-use glockmvc\core\Model;
+namespace ernestocalise\glockmvc\form;
+use ernestocalise\glockmvc\Model;
 class TextareaField extends BaseField {
     public function renderField():string
     {

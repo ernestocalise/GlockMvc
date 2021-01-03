@@ -1,5 +1,5 @@
 <?php
-namespace glockmvc\core;
+namespace ernestocalise\glockmvc;
 class Response {
   public function setStatusCode(int $code) {
     http_response_code($code);

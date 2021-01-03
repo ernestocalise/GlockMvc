@@ -1,7 +1,7 @@
 <?php
 
-namespace glockmvc\core;
-use glockmvc\core\Database\Database;
+namespace ernestocalise\glockmvc;
+use ernestocalise\glockmvc\Database\Database;
 class Application {
   public static string $ROOT_DIR;
   public string $userClass;
@@ -43,7 +43,7 @@ class Application {
             ]);
        }
   }
-  public function getController(): \glockmvc\core\Controller {
+  public function getController(): \ernestocalise\glockmvc\Controller {
     return $this->controller;
   }
   public function setController(Controller $inController) {

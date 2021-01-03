@@ -1,5 +1,5 @@
 <?php
-namespace glockmvc\core;
+namespace ernestocalise\glockmvc;
 abstract class DbModel extends Model{
      protected int $id;
      public const RELATION_ONE_TO_ONE = 'ONE_TO_ONE';

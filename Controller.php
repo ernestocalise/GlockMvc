@@ -1,6 +1,6 @@
 <?php
-namespace glockmvc\core;
-use glockmvc\core\Middleware\BaseMiddleware;
+namespace ernestocalise\glockmvc;
+use ernestocalise\glockmvc\Middleware\BaseMiddleware;
 class Controller {
   public string $layout = 'main';
   public string $action = '';

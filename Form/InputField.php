@@ -1,6 +1,6 @@
 <?php
-namespace glockmvc\core\form;
-use glockmvc\core\Model;
+namespace ernestocalise\glockmvc\form;
+use ernestocalise\glockmvc\Model;
 class InputField extends BaseField {
 
   public const TYPE_TEXT = 'text';

@@ -1,6 +1,6 @@
 <?php
-namespace glockmvc\core\Database;
-use glockmvc\core\Application;
+namespace ernestocalise\glockmvc\Database;
+use ernestocalise\glockmvc\Application;
 class Database {
   public \PDO $pdo;
   protected string $dbName;

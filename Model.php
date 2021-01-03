@@ -1,5 +1,5 @@
 <?php
-namespace glockmvc\core;
+namespace ernestocalise\glockmvc;
 abstract class Model {
     public const RULE_REQUIRED = 'required';
     public const RULE_EMAIL = 'email';

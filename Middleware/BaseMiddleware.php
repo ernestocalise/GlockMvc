@@ -1,5 +1,5 @@
 <?php
-namespace glockmvc\core\Middleware;
+namespace ernestocalise\glockmvc\Middleware;
 abstract class BaseMiddleware {
      abstract public function execute();
 }
