@@ -1,7 +1,7 @@
 <?php
-namespace ernestocalise\glockmvc\Middleware;
-use ernestocalise\glockmvc\Application;
-use ernestocalise\glockmvc\Exception\ForbiddenException;
+namespace glockmvc\core\Middleware;
+use glockmvc\core\Application;
+use glockmvc\core\Exception\ForbiddenException;
 class AuthMiddleware extends BaseMiddleware {
      public array $actions = [];
 

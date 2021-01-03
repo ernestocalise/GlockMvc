@@ -1,7 +1,7 @@
 <?php
-namespace ernestocalise\glockmvc\form;
-use ernestocalise\glockmvc\Application;
-use ernestocalise\glockmvc\Model;
+namespace glockmvc\core\form;
+use glockmvc\core\Application;
+use glockmvc\core\Model;
 class Form {
   private string $action;
   public function __construct($action)

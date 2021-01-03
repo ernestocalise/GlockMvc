@@ -1,8 +1,8 @@
 <?php
 
-namespace ernestocalise\glockmvc\form;
+namespace glockmvc\core\form;
 
-use ernestocalise\glockmvc\Model;
+use glockmvc\core\Model;
 
 abstract class BaseField
 {

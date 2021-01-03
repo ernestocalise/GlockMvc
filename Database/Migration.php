@@ -2,7 +2,7 @@
 /*
 class m0001_create_table_users {
   public function up(){
-    $db = \ernestocalise\glockmvc\Application::$app->db;
+    $db = \glockmvc\core\Application::$app->db;
     $SQL = "CREATE TABLE users (
          id INT AUTO_INCREMENT PRIMARY KEY,
          email VARCHAR(255) NOT NULL,
@@ -14,13 +14,13 @@ class m0001_create_table_users {
     $db->pdo->exec($SQL);
   }
   public function down() {
-       $db = \ernestocalise\glockmvc\Application::$app->db;
+       $db = \glockmvc\core\Application::$app->db;
        $SQL = "DROP TABLE users;";
        $db->pdo->exec($SQL);
   }
 }
 */
-namespace ernestocalise\glockmvc\Database;
+namespace glockmvc\core\Database;
 abstract class Migration {
     public string $tableName;
     //abstract public function up();

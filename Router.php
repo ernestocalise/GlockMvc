@@ -1,7 +1,7 @@
 <?php
 
-namespace ernestocalise\glockmvc;
-use ernestocalise\glockmvc\Exception\NotFoundException;
+namespace glockmvc\core;
+use glockmvc\core\Exception\NotFoundException;
 class Router {
     protected array $routes = [];
     public Request $request;

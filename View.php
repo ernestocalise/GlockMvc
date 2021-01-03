@@ -1,5 +1,5 @@
 <?php
-namespace ernestocalise\glockmvc;
+namespace glockmvc\core;
 class View {
      public function renderView ($view, $params = []) {
          $viewContent = $this->viewContent($view, $params);

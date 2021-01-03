@@ -1,5 +1,5 @@
 <?php
-namespace ernestocalise\glockmvc\CLI;
+namespace glockmvc\core\CLI;
 class FileBuilder {
     public string $path;
     public function __construct($path)
@@ -14,15 +14,15 @@ class FileBuilder {
     public function migration($migrationName) {
         $code = "
         <?php \n
-              use ernestocalise\glockmvc\Database\Migration;
-              use ernestocalise\glockmvc\Database\Table;
-              use ernestocalise\glockmvc\Database\Column;
+              use glockmvc\core\Database\Migration;
+              use glockmvc\core\Database\Table;
+              use glockmvc\core\Database\Column;
               class ".$migrationName." extends Migration{
                 public function up(){
-                  \$db = \ernestocalise\glockmvc\Application::\$app->db;
+                  \$db = \glockmvc\core\Application::\$app->db;
                 }
                 public function down(){
-                  \$db = \ernestocalise\glockmvc\Application::\$app->db;
+                  \$db = \glockmvc\core\Application::\$app->db;
                 }
               }
         ?>";
@@ -33,17 +33,17 @@ class FileBuilder {
     public function migrationForTable($migrationName) {
       $code = 
       "<?php \n
-      use ernestocalise\glockmvc\Database\Migration;
-      use ernestocalise\glockmvc\Database\Table;
-      use ernestocalise\glockmvc\Database\Column;
+      use glockmvc\core\Database\Migration;
+      use glockmvc\core\Database\Table;
+      use glockmvc\core\Database\Column;
       class ".$migrationName." extends Migration{
         public function up(){
-          \$db = \ernestocalise\glockmvc\Application::\$app->db;
+          \$db = \glockmvc\core\Application::\$app->db;
           \$table = \$this->createTable(\"tableName\");
           \$table->addColumn(\$table->column(\"id\", Column::TYPE_INT)->primaryKey()->autoIncrement());
         }
         public function down(){
-          \$db = \ernestocalise\glockmvc\Application::\$app->db;
+          \$db = \glockmvc\core\Application::\$app->db;
           \$db->execute(\$this->dropTableIfExists(\"users\"));
         }
       }
@@ -55,8 +55,8 @@ class FileBuilder {
         $code =
         "<?php \n
         namespace app\models;
-        use ernestocalise\glockmvc\Model;
-        use ernestocalise\glockmvc\Application;
+        use glockmvc\core\Model;
+        use glockmvc\core\Application;
         class $modelName extends Model
         {
             public function rules() : array {
@@ -86,8 +86,8 @@ class FileBuilder {
         $codeForModel =
         "<?php \n
         namespace app\models;
-        use ernestocalise\glockmvc\Model;
-        use ernestocalise\glockmvc\DbModel;
+        use glockmvc\core\Model;
+        use glockmvc\core\DbModel;
         class $modelName extends DbModel {
             public static function tableName():string {
                 return '$modelName';   

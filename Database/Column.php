@@ -1,5 +1,5 @@
 <?php
-namespace ernestocalise\glockmvc\Database;
+namespace glockmvc\core\Database;
 class Column {
     //String Related
     public const TYPE_CHAR = "CHAR";
