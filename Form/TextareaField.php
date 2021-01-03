@@ -1,6 +1,6 @@
 <?php
-namespace glockmvc\core\\form;
-use glockmvc\core\\Model;
+namespace glockmvc\core\form;
+use glockmvc\core\Model;
 class TextareaField extends BaseField {
     public function renderField():string
     {
