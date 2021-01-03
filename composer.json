@@ -8,5 +8,10 @@
             "email": "ernestocalise@libero.it"
         }
     ],
+    "autoload": {
+        "psr-4": {
+          "ernestocalise\\glockmvc\\": "."
+        }
+      },
     "require": {}
 }
