@@ -1,0 +1,12 @@
+{
+    "name": "ernestocalise/glock-mvc",
+    "description": "PHP MVC Framework",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Ernesto Calise",
+            "email": "ernestocalise@libero.it"
+        }
+    ],
+    "require": {}
+}
