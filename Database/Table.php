@@ -1,5 +1,5 @@
 <?php
-namespace glockmvc\core\Database;
+namespace glockmvc\core\\Database;
 class Table {
     public string $tableName;
     public array $columns;

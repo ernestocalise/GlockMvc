@@ -1,6 +1,6 @@
 <?php
-namespace glockmvc\core\CLI;
-use glockmvc\core\Application;
+namespace glockmvc\core\\CLI;
+use glockmvc\core\\Application;
 class Migrator {
     public $dotenv;
     public $config;

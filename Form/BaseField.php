@@ -1,8 +1,8 @@
 <?php
 
-namespace glockmvc\core\form;
+namespace glockmvc\core\\form;
 
-use glockmvc\core\Model;
+use glockmvc\core\\Model;
 
 abstract class BaseField
 {

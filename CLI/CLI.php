@@ -1,5 +1,5 @@
 <?php
-namespace glockmvc\core\CLI;
+namespace glockmvc\core\\CLI;
 class CLI{
     public string $path;
     public function __construct($path)
@@ -10,7 +10,7 @@ class CLI{
       echo '['.date('Y-m-d H:i:s').'] - '.$message.PHP_EOL;
     }
     public function info(){
-      echo PHP_EOL.'GlockMVC CLI v 1.0.0.0'.PHP_EOL.PHP_EOL.
+      echo PHP_EOL.'glockmvc\core\ CLI v 1.0.0.0'.PHP_EOL.PHP_EOL.
       'COMMAND LIST '.PHP_EOL.PHP_EOL.
       '----------------------------------------------'.PHP_EOL.
       'database:migrate                 :::::::  Run all the migration '.PHP_EOL.
@@ -32,7 +32,7 @@ class CLI{
     }
     public function serve() {
       chdir("public");
-      $this->logMessage('Started GlockMVC Development Server on localhost:8000');
+      $this->logMessage('Started glockmvc\core\ Development Server on localhost:8000');
       passthru(PHP_BINARY." -S localhost:8000");
     }
 }

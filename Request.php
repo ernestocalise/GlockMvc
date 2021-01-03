@@ -1,6 +1,6 @@
 <?php
-namespace glockmvc\core;
-use glockmvc\core\Exception\ForbiddenException;
+namespace glockmvc\core\;
+use glockmvc\core\\Exception\ForbiddenException;
 class Request {
   public function getPath() {
     $path = $_SERVER['REQUEST_URI'] ?? '/';

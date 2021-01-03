@@ -1,5 +1,5 @@
 <?php
-namespace glockmvc\core;
+namespace glockmvc\core\;
 class Session {
      protected const FLASH_KEY = 'flash_messagges';
      protected const CSRF_KEY = 'csrf_token';

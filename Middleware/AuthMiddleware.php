@@ -1,7 +1,7 @@
 <?php
-namespace glockmvc\core\Middleware;
-use glockmvc\core\Application;
-use glockmvc\core\Exception\ForbiddenException;
+namespace glockmvc\core\\Middleware;
+use glockmvc\core\\Application;
+use glockmvc\core\\Exception\ForbiddenException;
 class AuthMiddleware extends BaseMiddleware {
      public array $actions = [];
 
