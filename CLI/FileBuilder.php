@@ -1,5 +1,5 @@
 <?php
-namespace glockmvc\core\\CLI;
+namespace glockmvc\core\CLI;
 class FileBuilder {
     public string $path;
     public function __construct($path)
