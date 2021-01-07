@@ -1,7 +1,7 @@
 <?php
 
 namespace glockmvc\core;
-use glockmvc\core\Database\Database;
+use \glockmvc\core\Database\{Database, DbModel};
 class Application {
   public static string $ROOT_DIR;
   public string $userClass;
@@ -13,7 +13,7 @@ class Application {
   public Database $db;
   public static Application $app;
   public ?Controller $controller = null;
-  public ?DbModel $user;
+  public ?\app\models\user $user;
   public View $view;
   public function __construct($rootPath, array $config){
       $this->userClass = $config['userClass'];

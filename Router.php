@@ -1,6 +1,7 @@
 <?php
 
 namespace glockmvc\core;
+use app\controllers\SiteController;
 use glockmvc\core\Exception\NotFoundException;
 class Router {
     protected array $routes = [];

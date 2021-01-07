@@ -1,5 +1,6 @@
 <?php
-namespace glockmvc\core;
+namespace glockmvc\core\Database;
+use \glockmvc\core\{Model, Application};
 abstract class DbModel extends Model{
      protected int $id;
      public const RELATION_ONE_TO_ONE = 'ONE_TO_ONE';
@@ -47,13 +48,13 @@ abstract class DbModel extends Model{
           $statement->execute();
           return static::treatStatementValues($statement);
      }
-     public function hasMany(DbModel $model, string $relation = static::RELATION_ONE_TO_MANY, ?string $pivot) {
+     public static function hasMany(DbModel $model, string $relation = self::RELATION_ONE_TO_MANY, ?string $pivot) {
           if($relation === static::RELATION_ONE_TO_MANY){
-               return $this->oneHasMany($model);
+               return self::oneHasMany($model);
           }
           if($relation === static::RELATION_MANY_TO_MANY){
                if($pivot != null && trim($pivot) !== ''){
-                    return $this->manyToMany($model, $pivot);
+                    return self::manyToMany($model, $pivot);
                }
                else {
                     throw new \PDOException;
