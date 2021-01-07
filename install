@@ -1,0 +1,73 @@
+<?php
+class CLI_Installer {
+    function Info() {
+        echo PHP_EOL.'GlockMVC Installer v 1.0.0.0'.PHP_EOL.PHP_EOL.
+        'COMMAND LIST '.PHP_EOL.PHP_EOL.
+        '----------------------------------------------'.PHP_EOL.
+        'core                 :::::::  Install only the core functionality '.PHP_EOL.
+        'ui                   :::::::  Install only the UI functionality   '.PHP_EOL.
+        'full                 :::::::  Install everything                  '.PHP_EOL;
+    }
+
+    public function core() {
+        $this->logMessage("Installing Core functionality");
+        if($this->install("core"))
+        {
+            $this->logMessage("GlockMVC Core installed with success!");
+        }
+        else{
+            $this->logMessage("error Installing GlockMVC Core");
+        }
+    }
+    public function ui() {
+        $this->logMessage("Installing UI functionality & scaffolding");
+        if($this->install("ui")){
+            $this->logMessage("GlockMVC UI scaffolding installed successfully");
+        }
+        else {
+            $this->logMessage("Error installing GlockMVC UI scaffolding");
+        }
+    }
+    public function full() {
+        $this->core();
+        $this->ui();
+    }
+    private function install($package) {
+        $zip = new ZipArchive;
+        $res = $zip->open("$package.zip");
+        if ($res === TRUE) {
+          $zip->extractTo('./../../../');
+          $zip->close();
+          return true;
+        } else {
+          return false;
+        }
+    }
+    private function logMessage($message){
+        echo '['.date('Y-m-d H:i:s').'] - '.$message.PHP_EOL;
+    }
+}
+
+
+$cli = new CLI_Installer();
+if(count($argv) === 1){
+    $cli->Info();
+  }
+else {
+    switch($argv[1]){
+        case 'Info':
+            $cli->Info();
+            break;
+        case 'core':
+            $cli->core();
+            break;
+        case 'ui':
+            $cli->ui();
+            break;
+        case 'full':
+            $cli->full();
+            break;
+    }
+}
+
+?>

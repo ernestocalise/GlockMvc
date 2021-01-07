@@ -37,6 +37,7 @@ class Application {
             echo $this->router->resolve();
        }
        catch (\Exception $e){
+            echo $e;
             $this->response->setStatusCode($e->getCode());
             echo $this->view->renderView('default\_genericError', [
                  'exception' => $e
@@ -49,7 +50,11 @@ class Application {
   public function setController(Controller $inController) {
     $this->controller = $inController;
   }
+  public static function getInstance(){
+     return self::$app;
+}
   public function login (DbModel $user) {
+       exit();
        $this->user = $user;
        $primaryKey = $user->primaryKey();
        $primaryValue = $user->{$primaryKey};

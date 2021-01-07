@@ -2,16 +2,32 @@
 namespace glockmvc\core\Database;
 use \glockmvc\core\{Model, Application};
 abstract class DbModel extends Model{
-     protected int $id;
+     public int $id;
      public const RELATION_ONE_TO_ONE = 'ONE_TO_ONE';
      public const RELATION_MANY_TO_MANY = 'MANY_TO_MANY';
      public const RELATION_ONE_TO_MANY = 'ONE_TO_MANY';
      abstract public static function tableName(): string;
      abstract public static function attributes(): array;
      abstract public static function primaryKey(): string;
+     abstract public static function attributesToRowName():array;
+     public static function create():DbModel {
+          $obj = new self();
+          if ($obj->save()){
+               return self::getLast();
+          }
+          return false;
+     }
+     public static function getLast(): DbModel{
+          $tableName = static::tableName();
+          $pkName = static::primaryKey();
+          $statement = self::prepare("SELECT * FROM $tableName order by $pkName DESC LIMIT 1");
+          $statement->execute();
+          return $statement->fetchObject(static::class);
+     }
      public function save() {
           $tableName = $this->tableName();
           $attributes = $this->attributes();
+          $this->onCreation();
           $params = array_map(fn($attr) => ":$attr", $attributes);
           $statement = self::prepare("INSERT INTO $tableName (".implode(',', $attributes).")
           VALUES (".implode(',', $params).")");
@@ -21,7 +37,6 @@ abstract class DbModel extends Model{
           $statement->execute();
           return true;
      }
-
      public static function findOne($where) {
           //where = [email => email@esempio.com, nome => peppecalise]
           $tableName = static::tableName();
@@ -111,6 +126,9 @@ abstract class DbModel extends Model{
      }
      private function getID() {
           return $this->id; 
+     }
+     public function onCreation() {
+
      }
      public static function prepare($sql) {
           return Application::$app->db->pdo->prepare($sql);

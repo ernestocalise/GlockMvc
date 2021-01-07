@@ -10,24 +10,24 @@ class InputField extends BaseField {
 
 
   public string $type;
-
-
+  public string $placeHolder = "";
   public function __construct(Model $model, string $attribute) {
     $this->type = self::TYPE_TEXT;
     parent::__construct($model, $attribute);
   }
   public function renderField() : string {
     return sprintf('
-        <input name="%s" type="%s" id="%s" value="%s" class="form-control %s">
+        <input name="%s" type="%s" id="%s" value="%s" placeholder="%s" class="form-control %s" %s>
   ',
     $this->attribute,
     $this->type,
     $this->attribute,
     $this->model->{$this->attribute},
-    $this->model->hasError($this->attribute) ? ' is-invalid ' : ''
+    $this->placeHolder,
+    $this->model->hasError($this->attribute) ? ' is-invalid ' : '',
+    ($this->readonly) ? "readonly" : "" 
   );
   }
-
 
   public function emailField() {
     $this->type = self::TYPE_EMAIL;
@@ -41,6 +41,10 @@ class InputField extends BaseField {
 
   public function passwordField() {
     $this->type = self::TYPE_PASSWORD;
+    return $this;
+  }
+  public function placeHolder($placeholderText){
+    $this->placeHolder = $placeholderText;
     return $this;
   }
 }
