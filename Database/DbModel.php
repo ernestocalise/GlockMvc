@@ -63,13 +63,13 @@ abstract class DbModel extends Model{
           $statement->execute();
           return static::treatStatementValues($statement);
      }
-     public static function hasMany(DbModel $model, string $relation = self::RELATION_ONE_TO_MANY, ?string $pivot) {
-          if($relation === static::RELATION_ONE_TO_MANY){
-               return self::oneHasMany($model);
+     public function hasMany(DbModel $model, string $relation = self::RELATION_ONE_TO_MANY, ?string $pivot) {
+          if($relation === self::RELATION_ONE_TO_MANY){
+               return $this->oneHasMany($model);
           }
-          if($relation === static::RELATION_MANY_TO_MANY){
+          if($relation === self::RELATION_MANY_TO_MANY){
                if($pivot != null && trim($pivot) !== ''){
-                    return self::manyToMany($model, $pivot);
+                    return $this->manyToMany($model, $pivot);
                }
                else {
                     throw new \PDOException;

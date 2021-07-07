@@ -33,6 +33,6 @@ class CLI{
     public function serve() {
       chdir("public");
       $this->logMessage('Started glockmvc\core\ Development Server on localhost:8000');
-      passthru(PHP_BINARY." -S localhost:8000");
+      passthru(PHP_BINARY." -S localhost:8000 index.php");
     }
 }

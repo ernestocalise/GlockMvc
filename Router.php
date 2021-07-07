@@ -20,16 +20,46 @@ class Router {
     public function post($path, $callback) {
       $this->routes['post'][$path] = $callback;
     }
-
+    public function route_match($server_route, $user_route){
+        //Route /profile/{username}
+        $params = [];
+        $arrServer = explode("/", $server_route);
+        $arrUser = explode("/", $user_route);
+        if(count($arrServer) == count($arrUser)){
+            for($i = 0; $i<count($arrServer);$i++){
+              if(str_starts_with($arrServer[$i], "{") && str_ends_with($arrServer[$i], "}")){
+                  $params[substr($arrServer[$i], 1,-1)] = $arrUser[$i];
+              }
+              else {
+                if($arrServer[$i] != $arrUser[$i]){
+                  return false;
+                }
+              }
+            }
+            return [true, $params];
+        } else {
+          return false;
+        }
+    }
     public function resolve()
     {
         $path = $this->request->getPath();
         $method = $this->request->getMethod();
-        $callback = $this->routes[$method][$path] ?? false;
-        if(!$callback) {
+        $result = [];
+        foreach($this->routes[$method] as $key => $value){
+          $result = $this->route_match($key, $path);
+          if($result != false){
+            $result[0] = $value;
+            break;
+          }
+        }
+        //$callback = $this->routes[$method][$path] ?? false;
+        if(!$result) {
           throw new NotFoundException();
           exit();
         }
+        $callback = $result[0];
+        $this->request->parameters = $result[1];
         if(is_string($callback)) {
           return Application::$app->view->renderView($callback);
         }

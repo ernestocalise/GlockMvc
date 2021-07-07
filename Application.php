@@ -13,7 +13,7 @@ class Application {
   public Database $db;
   public static Application $app;
   public ?Controller $controller = null;
-  public ?\app\models\user $user;
+  public ?DbModel $user;
   public View $view;
   public function __construct($rootPath, array $config){
       $this->userClass = $config['userClass'];
